@@ -1,0 +1,31 @@
+#box-warp {
+	background-image : url(../pics/football_tlo1.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat : no-repeat;
+
+}
+
+html, body {
+        height: 100%;
+  }
+
+.ui.grid {
+      height: 100%;
+}
+#mecze {
+	height:10%;
+}
+
+#rest {
+	height:50%;
+}
+
+#menu {
+	height:10%;
+}
+
+#login {
+	height:30%;
+}
