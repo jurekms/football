@@ -16,7 +16,7 @@ class User extends MY_REST_Controller {
   }
 
 
-	public function edit_get()
+	public function adminEdit_get()
 	{
 		$groups = [];
 		$id = $this->get('id') == -1 ? $this->getLoggedUserID() : $this->get('id');
@@ -32,7 +32,7 @@ class User extends MY_REST_Controller {
 
 
 
-	public function edit_put()
+	public function adminEdit_put()
 	{
 		$id = $this->put('id');
 		$username = $this->put('username');
@@ -73,9 +73,39 @@ class User extends MY_REST_Controller {
 
 	}
 
-	public function getJwtToken()
+
+	public function edit_get()
 	{
-	return $this->jwtToken;
+		$groups = [];
+		$id =  $this->getLoggedUserID();
+		$groupsIonAuth = (array)$this->ion_auth->get_users_groups($id)->result();
+		foreach ($groupsIonAuth as $group){
+			$groupIonAuth = (array)$group;
+			$groups[] = $groupIonAuth['id'];
+		};
+		$userIonAuth =(array) $this->ion_auth->user($id)->row();
+		$user =array( 'id' => 0, 'username' => $userIonAuth['username'], 'first_name' => $userIonAuth['first_name'], 'last_name' => $userIonAuth['last_name'], 'email' => $userIonAuth['email'], 'group' => $groups);
+		$this->set_response($user, REST_Controller::HTTP_OK);
+	}
+
+	public function edit_put()
+	{
+		$id =  $this->getLoggedUserID();
+		$username = $this->getLoggedUserName();
+		$password = $this->put('new_password');
+		$email = $this->put('email');
+		$first_name = $this->put('first_name');
+		$last_name = $this->put('last_name');
+
+		$user = array(
+					 'first_name' => $first_name,
+					 'last_name' => $last_name,
+					 'password' => $password,
+					 'email' => $email
+						);
+
+		 $this->ion_auth->update($id, $user);
+		 $this->set_response(array('username' => $username), REST_Controller::HTTP_OK);
 	}
 
 

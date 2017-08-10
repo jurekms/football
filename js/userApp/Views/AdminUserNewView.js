@@ -1,10 +1,10 @@
 (function(){
-  App.Views.UserNew = Backbone.View.extend({
+  App.Views.AdminUserNew = Backbone.View.extend({
     initialize    : function(){
       this.groupCollection = new App.Collections.Groups({});
       this.groupCollection.fetch({reset:true});
       this.listenTo(this.model, "invalid", this.showErrorInfo);
-      this.listenToOnce(this.groupCollection, "reset", this.render());
+      this.render();
     },
     template      : _.template($("#template-user-edit").html()),
     render        : function(){

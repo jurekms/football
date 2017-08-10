@@ -1,5 +1,5 @@
 (function(){
-  App.Views.UsersList = Backbone.View.extend({
+  App.Views.AdminUsersList = Backbone.View.extend({
     initialize    : function(options){
       this.options = options
       this.listenTo(this.collection, "reset", this.render);
@@ -32,7 +32,7 @@
       "click #btn-exit" : "exitEdit"
     },
     addNewUser  : function(){
-      App.router.navigate("userAdd",{trigger : true});
+      App.router.navigate("adminUserAdd",{trigger : true});
     },
     exitEdit    : function(){
       App.router.navigate("/",{trigger : true});

@@ -50,7 +50,7 @@
           rules: [
             {
               type   : 'empty',
-              prompt : 'Musisz wybrać przynajmniej jedną grupę.'
+              prompt : 'Wybierz przynajmniej jedną rolę.'
             }
           ]
         }

@@ -22,9 +22,11 @@ require(APPPATH.'libraries/JWT/ExpiredException.php');
   {
     parent::__construct();
     $this->globalPrivilages = array('user' => array(
-                                                      'edit_get' => array('admin','members','footballer'),
-                                                      'edit_put' => array('admin','members'),
-                                                      'add_post' => array('admin', 'members')
+                                                      'adminEdit_get' => array('admin'),
+                                                      'adminEdit_put' => array('admin'),
+                                                      'add_post' => array('admin'),
+                                                      'edit_get' => array('members'),
+                                                      'edit_put' => array('members')
                                                     ),
                                     'users' => array(
                                                       'list_get' => array('admin','footballer')
@@ -98,6 +100,9 @@ require(APPPATH.'libraries/JWT/ExpiredException.php');
     return $this->loggedUserID;
   }
 
+  protected function getLoggedUserName() {
+    return $this->loggedUsername;
+  }
 
 
 

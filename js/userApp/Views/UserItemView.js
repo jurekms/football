@@ -9,7 +9,7 @@
     },
     events        : {"click" : "clickHandler"},
     clickHandler  : function(){
-      App.router.navigate("userEdit/"+this.model.get("id"),{trigger : true});
+      App.router.navigate("adminUserEdit/"+this.model.get("id"),{trigger : true});
     }
   });
 })();

@@ -22,7 +22,7 @@
 
 
       <div class="ui compact menu">
-        <a class="item" href="userEdit/-1" pushstate-link>
+        <a class="item" href="userEdit" pushstate-link>
           <i class="settings icon"></i>
           Moje dane
         </a>
@@ -132,8 +132,8 @@
           <div class="fields">
              <div class="six wide field error">
                <label>login</label>
-               <input type="text" name="username" id="form-username" />
 
+               <input type="text" name="username" id="form-username"  <%= (this.model.isNew()) ? '' : 'disabled'  %> />
              </div>
              <div class="ten wide field">
                <label>email</label>
@@ -166,8 +166,9 @@
 
          </div>
 
-         <div class="fields">
-           <select class="ui fluid dropdown" name="groups" multiple="multiple" id="dropdown-groups"></select>
+         <div class="field" <%= (this.model.get('id') == 0) ? 'hidden' : ''  %>>
+           <label>Role użytkownika </label>
+           <select class="ui fluid dropdown" name="groups" multiple="multiple" id="dropdown-groups" <%= (this.model.get('id') == 0) ? 'disabled' : ''  %> ></select>
          </div>
          <div class="field">
          <div class="ui error message"></div>
@@ -232,19 +233,19 @@
 <script src="../../js/userApp/Views/PaginationView.js"></script>
 
 
+
 <script src="../../js/userApp/Models/UserModel.js"></script>
-<script src="../../js/userApp/Views/UserItemView.js"></script>
-<script src="../../js/userApp/Collections/UsersCollection.js"></script>
-<script src="../../js/userApp/Views/UsersListView.js"></script>
-
-<script src="../../js/userApp/Views/UserNewView.js"></script>
-<script src="../../js/userApp/Views/UserEditView.js"></script>
-
 <script src="../../js/userApp/Models/GroupModel.js"></script>
+
 <script src="../../js/userApp/Collections/GroupsCollection.js"></script>
+<script src="../../js/userApp/Collections/UsersCollection.js"></script>
 
 
-
+<script src="../../js/userApp/Views/UserItemView.js"></script>
+<script src="../../js/userApp/Views/AdminUsersListView.js"></script>
+<script src="../../js/userApp/Views/AdminUserNewView.js"></script>
+<script src="../../js/userApp/Views/AdminUserEditView.js"></script>
+<script src="../../js/userApp/Views/UserEditView.js"></script>
 
 <script src="../../js/userApp/Routers/Router.js"></script>
 
