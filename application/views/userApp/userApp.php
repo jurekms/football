@@ -168,7 +168,7 @@
 
          <div class="field" <%= (this.model.get('id') == 0) ? 'hidden' : ''  %>>
            <label>Role użytkownika </label>
-           <select class="ui fluid dropdown" name="groups" multiple="multiple" id="dropdown-groups" <%= (this.model.get('id') == 0) ? 'disabled' : ''  %> ></select>
+           <select class="ui fluid dropdown" name="groups" multiple="multiple" id="dropdown-roles" <%= (this.model.get('id') == 0) ? 'disabled' : ''  %> ></select>
          </div>
          <div class="field">
          <div class="ui error message"></div>
@@ -235,9 +235,9 @@
 
 
 <script src="../../js/userApp/Models/UserModel.js"></script>
-<script src="../../js/userApp/Models/GroupModel.js"></script>
+<script src="../../js/userApp/Models/RoleModel.js"></script>
 
-<script src="../../js/userApp/Collections/GroupsCollection.js"></script>
+<script src="../../js/userApp/Collections/RolesCollection.js"></script>
 <script src="../../js/userApp/Collections/UsersCollection.js"></script>
 
 

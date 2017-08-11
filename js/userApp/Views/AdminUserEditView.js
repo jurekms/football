@@ -2,9 +2,8 @@
   App.Views.AdminUserEdit = Backbone.View.extend({
     initialize    : function(){
       this.isNew = this.model.isNew();
-      this.groupCollection = new App.Collections.Groups();
-      //this.groupCollection.add([{id : '',name:'Wybierz grupę dla użytkownika'}]);
-      this.groupCollection.fetch({remove : false, cache : true, expires : 10});
+      this.rolesCollection = new App.Collections.Roles();
+      this.rolesCollection.fetch({remove : false, cache : true, expires : 10});
       if(this.isNew) {
         this.render();
       } else {
@@ -17,7 +16,7 @@
       this.$el.html(html);
       App.Regions.appEditDashboard.html(this.el);
       this.stickit();
-      this.$el.find('#dropdown-groups').dropdown({'placeholder' : 'Wybierz rolę dla użytkownika...'});
+      this.$el.find('#dropdown-roles').dropdown({'placeholder' : 'Wybierz rolę dla użytkownika...'});
       this.$el.find('#form-user-edit').form(App.FormsValidators.userEditFV);
       if(!this.isNew) {
         this.$el.find('#form-user-edit').form('validate form');
@@ -31,9 +30,9 @@
       "#form-last-name"     : "last_name",
       "#form-password"      : "new_password",
       "#form-re-password"   : "re_new_password",
-      "#dropdown-groups"    : {observe : 'group',
+      "#dropdown-roles"     : {observe : 'roles',
                                selectOptions: {
-                                  collection: 'this.groupCollection',
+                                  collection: 'this.rolesCollection',
                                   labelPath: 'name',
                                   valuePath: 'id'}
                               }

@@ -31,7 +31,7 @@ require(APPPATH.'libraries/JWT/ExpiredException.php');
                                     'users' => array(
                                                       'list_get' => array('admin','footballer')
                                                     ),
-                                    'group' => array(
+                                    'role' => array(
                                                       'list_get' => array('admin','members','footballer'),
                                                       'edit_put' => array('admin'),
                                                       'add_post' => array('admin', 'members')

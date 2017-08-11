@@ -18,8 +18,7 @@
       this.collection.fetch({reset : true});
     },
     render        : function(){
-      this.$el.attr("multiple","multiple");
-      this.$el.append("<option value=''>Wybierz grupę użytkownikow</option>")
+      //this.$el.attr("multiple","multiple");
       this.collection.each(this.addListElement, this);
       $('.ui.dropdown').dropdown();
       return this;
